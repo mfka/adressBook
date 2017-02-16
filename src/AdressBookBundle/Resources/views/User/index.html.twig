@@ -1,0 +1,90 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="center-block">
+
+        <h1 class='page-header text-center'>User List</h1>
+
+    </div>
+
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <div class="row">
+
+                <div class="">
+                    Filter:
+                    {% for group in groups %}
+                        <a href="{{ path('', {'idGroup' : group.id}) }}">{{ group.name }} ({{ group.users|length }}
+                            )</a> |
+                    {% endfor %}
+                    <a href="{{ path('') }}"> All ({{ entities|length }})</a>
+                </div>
+
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Birth</th>
+                        <th><a href="{{ path('groups') }}">Groups</a></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.login }}</td>
+                            <td>{{ entity.name }}</td>
+                            <td>{{ entity.surname }}</td>
+                            <td>{% if entity.birth %}{{ entity.birth|date('Y-m-d') }}{% endif %}</td>
+                            <td>
+                                <ul class="">
+                                    {% for group in entity.groups %}
+                                        <li class=""><a
+                                                    href="{{ path('groups_show', {'id': group.id}) }}">{{ group.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </td>
+
+                            <td>
+                                <a href="{{ path('_show', { 'id': entity.id }) }}">
+                                    <button class="btn btn-default">
+                                        show
+                                    </button>
+                                </a>
+                                <a href="{{ path('_edit', { 'id': entity.id }) }}">
+                                    <button class="btn btn-success">
+                                        edit
+                                    </button>
+                                </a>
+                                {{ form(deleteForms[entity.id]) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('_new') }}">
+                    <button class="btn btn-primary">
+                        New User
+                    </button>
+                </a>
+                <a href="{{ path('groups') }}">
+                    <button class="btn btn-primary">
+                        Groups
+                    </button>
+                </a>
+                <a href="{{ path('groups_new') }}">
+                    <button class="btn btn-primary">
+                        New Group
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

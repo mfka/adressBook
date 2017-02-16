@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="center-block">
+
+        <h1 class='page-header text-center'>Groups</h1>
+
+    </div>
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('groups_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('groups_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('groups_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('groups_new') }}">
+            <button class="btn btn-default">
+                New Group
+            </button>
+        </a>
+        <a href="{{ path('') }}">
+            <button class="btn btn-default">
+                User list
+            </button>
+        </a>
+        <a href="{{ path('_new') }}">
+            <button class="btn btn-default">
+                Add User
+            </button>
+        </a>
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="center-block">
+
+        <h1 class='page-header text-center'>{{ entity.name }}</h1>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-offset-5">
+                <button class="btn btn-default">
+                    <a href="{{ path('groups') }}">
+                        <span class="glyphicon glyphicon-arrow-left"></span>Back to the list
+                    </a>
+                </button>
+                <button class="btn btn-default">
+                    <a href="{{ path('groups_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
+                </button>
+            </div>
+            <div class="col-md-6">
+                <ol>
+
+                    {% for user in entity.users %}
+                        <li>{{ user.name }} {{ user.surname }} - login: {{ user.login }} - date of
+                            birth: {{ user.birth|date('d-m-Y') }}</li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

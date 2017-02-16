@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="center-block">
+
+        <h1 class='page-header text-center'>Add new User</h1>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                {{ form(form) }}
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-default">
+                    <a href="{{ path('') }}">
+                        <span class="glyphicon glyphicon-arrow-left"></span> Back to the list
+                    </a>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
