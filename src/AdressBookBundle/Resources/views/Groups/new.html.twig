@@ -1,15 +1,27 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Groups creation</h1>
+    <div class="center-block">
 
-    {{ form(form) }}
+        <h1 class='page-header text-center'>Add Group</h1>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('groups') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                {{ form(form) }}
+            </div>
+
+            <div class="col-lg-offset-5 col-lg-2">
+                <a href="{{ path('groups') }}">
+                    <button class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>Back to the list
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
 {% endblock %}
