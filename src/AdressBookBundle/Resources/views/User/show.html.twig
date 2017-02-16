@@ -28,8 +28,8 @@
                         <td>{{ entity.surname }}</td>
                     </tr>
                     <tr>
-                        <th>Birth:</th
-                        <td>{{ entity.birth|date('Y-m-d H:i:s') }}</td>
+                        <th>Birth:</th>
+                        <td>{{ entity.birth|date('Y-m-d') }}</td>
                     </tr>
                     {% if entity.groups %}
                         <tr>
