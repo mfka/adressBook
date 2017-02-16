@@ -21,7 +21,10 @@ class GroupsType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Users:'
-            ));;
+            ))
+            ->add('submit', 'submit', array('label' => 'Confirm', 'attr' => array('class' => 'btn btn-primary')));
+
+
     }
 
     /**

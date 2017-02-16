@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-lg-offset-5">
+            <div class="col-md-12">
                 <button class="btn btn-default">
                     <a href="{{ path('groups') }}">
                         <span class="glyphicon glyphicon-arrow-left"></span>Back to the list
@@ -17,15 +17,17 @@
                 </button>
                 <button class="btn btn-default">
                     <a href="{{ path('groups_edit', { 'id': entity.id }) }}">
-                        Edit
+                        Edit Group
                     </a>
                 </button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <hr>
+                <h4 class="text-center text-capitalize">User List:</h4>
                 <ol>
-
                     {% for user in entity.users %}
-                        <li>{{ user.name }} {{ user.surname }} - login: {{ user.login }} - date of
+                        <li><a href="{{ path('_show', {'id' : user.id}) }}">{{ user.name }} {{ user.surname }} </a>-
+                            login: {{ user.login }} - date of
                             birth: {{ user.birth|date('d-m-Y') }}</li>
                     {% endfor %}
                 </ol>
