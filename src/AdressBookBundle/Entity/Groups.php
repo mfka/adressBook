@@ -109,6 +109,7 @@ class Groups
     public function addUser(\AdressBookBundle\Entity\User $user)
     {
         $this->users[] = $user;
+        $user->addGroup($this);
 
         return $this;
     }
@@ -121,5 +122,6 @@ class Groups
     public function removeUser(\AdressBookBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
+        $user->removeGroup($this);
     }
 }

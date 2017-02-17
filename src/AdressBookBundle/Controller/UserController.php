@@ -31,9 +31,9 @@ class UserController extends Controller
 
         $groups = $em->getRepository('AdressBookBundle:Groups')->findAll();
 
-        $groupId = $request->get('idGroup');
-        if ($groupId) {
-            $users = $em->getRepository('AdressBookBundle:Groups')->find($groupId);
+        $users = $em->getRepository('AdressBookBundle:Groups')->find($request->get('idGroup'));
+
+        if ($users) {
             $entities = $users->getUsers();
         } else {
             $entities = $em->getRepository('AdressBookBundle:User')->findAll();

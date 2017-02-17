@@ -18,6 +18,7 @@ class GroupsType extends AbstractType
             ->add('name')
             ->add('users', 'entity', array(
                 'class' => 'AdressBookBundle:User',
+                'by_reference' => false,
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Users:'
